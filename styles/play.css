@@ -201,6 +201,10 @@ h1{
     font-weight: bold;
 }
 
+.button{
+    border-color: black;
+}
+
 button{
     border-color: black;
 }
