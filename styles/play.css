@@ -21,6 +21,10 @@ div{
     border-color: black;
 }
 
+input{
+    border-color: black;
+}
+
 .board-ctr{
     display: flex;
     flex-direction: row;
