@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Scrabble Scorer</title>
+
+        <link rel="icon" type="image/png" href="assets/Logo.png">
+        <link rel="stylesheet" href="styles/index.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    </head>
+
+    <body>
+        <h1>SCRABBLE<br>SCORER</h1>
+        <div class="button" onclick="start()">
+            <h2>Start</h2>
+        </div>
+
+        <div class="dbx-players">
+            <h2>Players</h2>
+
+            <!--Generated in JavaScript-->
+            <div class="player-container"></div>
+
+            <input type="button" class="button" id="add" onclick="add()" value="Add">
+            <input type="button" class="button" onclick="play()" value="Play">
+        </div>
+
+        <div class="msg-container">
+            <h2>Message</h2>
+            <p class="msg-content"></p>
+            <input type="button" class="button" id="okay" onclick="messageClose()" value="Okay">
+        </div>
+
+        <script src="scripts/index.js"></script>
+    </body>
+</html>

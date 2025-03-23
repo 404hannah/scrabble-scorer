@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Scrabble Scorer</title>
+
+        <link rel="icon" type="image/png" href="assets/logo.png">
+        <link rel="stylesheet" href="styles/play.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    </head>
+
+    <body>      
+        <div class="board-ctr">
+            <div class="board-sub-ctr">
+                <!-- Generate board through JavaScript -->
+            </div>
+        </div>
+
+        <div class="info-ctr">
+            <div class="info-sub-ctr">
+                <h1>SCRABBLE SCORER</h1>
+                <div class="players-ctr">
+                    <!-- Generate players through JavaScript -->
+                </div>
+                <div class="fin-ex-ctr">
+                    <button onclick="finMsg()">Finish</button>
+                    <div></div>
+                    <button onclick="exitMsg()">Exit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="msgs">
+            <div class="ins-container">
+                <h2>Instructions</h2>
+                <p class="ins-content">Click a tile to input a word. For blank letters, used "_".</p>
+                <input type="button" class="button" onclick="insExit()" value="Okay">
+            </div>
+
+            <div class="fin-container">
+                <h2>Are you sure?</h2>
+                <p class="fin-content">If yes, the game is ended and the winner will be announced.</p>
+                <div>
+                    <input type="button" class="button" onclick="fin(true)" value="Yes">
+                    <input type="button" class="button" onclick="fin(false)" value="Cancel">
+                </div>
+            </div>
+
+            <div class="exit-container">
+                <h2>Are you sure?</h2>
+                <p class="exit-content">If yes, the game is lost.</p>
+                <div>
+                    <input type="button" class="button" onclick="exit(true)" value="Yes">
+                    <input type="button" class="button" onclick="exit(false)" value="Cancel">
+                </div>
+            </div>
+
+            <div class="turn-container">
+                <h2></h2>
+                <input type="text" class="textbox" placeholder="Type the word here">
+                <div>
+                    <p>Direction</p>
+                    <button class="horizontal" onclick="direction('x')"><i class='bx bx-right-arrow-alt'></i></button>
+                    <button class="vertical" onclick="direction('y')"><i class='bx bx-down-arrow-alt' ></i></button>
+                </div>
+                <div>
+                    <input type="button" class="button" onclick="skip()" value="Skip">
+                    <input type="button" class="button" onclick="turnExit()" value="Cancel">
+                </div>
+                <input type="button" class="button play" onclick="play()" value="Play">
+            </div>
+
+            <div class="err-container">
+                <h2>Error</h2>
+                <p class="err-content"></p>
+                <input type="button" class="button" onclick="errExit()" value="Okay">
+            </div>
+
+            <div class="score-container">
+                <h2>Score</h2>
+                <p class="score-content"></p>
+                <input type="button" class="button" onclick="exitScore()" value="Okay">
+            </div>
+
+            <div class="moves-container">
+                <h2>Name's Moves</h2>
+                <p class="moves-content"></p>
+                <input type="button" class="button" onclick="movesExit()" value="Close">
+            </div>
+        </div>
+        
+        <script src="scripts/play.js"></script>
+    </body>
+</html>

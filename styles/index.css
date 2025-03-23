@@ -1,0 +1,254 @@
+body{
+    margin: 0px;
+    padding: 0px;
+
+    font-family: Roboto;
+    color: black;
+
+    background-image: url("../assets/index-background-desktop.png");
+    background-size: cover;
+
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 60px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.button{
+    width: 150px;
+    height: 50px;
+
+    background-color: white;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 15px;
+
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button h2{
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.button:hover{
+    background-color: rgb(225, 225, 225);
+    cursor: pointer;
+}
+
+.button:active{
+    background-color: rgb(206, 206, 206);
+    cursor: pointer;
+}
+
+.dbx-players{
+    position: absolute;
+
+    width: 480px;
+    height: 480px;
+
+    padding: 5px 5px 5px 5px;
+
+    background-color: white;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 25px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dbx-players h2{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    margin: 15px 0px 0px 0px;
+    padding: 0px;
+}
+
+.player-container{
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.player-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.player-container h2{
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.player-container input{
+    width: 275px;
+    height: 40px;
+
+    text-align: left;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+
+    margin-left: 10px;
+    padding: 5px 10px;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 25px;
+}
+
+.player-container #x{
+    display: flex;
+    font-size: 36px;
+}
+
+.player-container #x:hover{
+    color: rgb(41, 41, 41)
+}
+
+.player-container #x:active{
+    color: rgb(115, 115, 115)
+}
+
+.dbx-players .button{
+    width: 150px;
+    height: 50px;
+
+    background-color: white;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 15px;
+
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.dbx-players .button:hover{
+    background-color: rgb(225, 225, 225);
+    cursor: pointer;
+}
+
+.dbx-players .button:active{
+    background-color: rgb(206, 206, 206);
+    cursor: pointer;
+}
+
+.msg-container{
+    position: absolute;
+
+    width: 480px;
+    height: 480px;
+
+    padding: 5px 5px 5px 5px;
+
+    background-color: white;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 25px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg-container h2{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    margin: 15px 0px 0px 0px;
+    padding: 0px;
+}
+
+.msg-container .button{
+    width: 150px;
+    height: 50px;
+
+    background-color: white;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 15px;
+
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+@media only screen and (max-width: 480px) {
+    body{
+        background-image: url("../assets/index-background-phone.png");
+    }
+
+    .dbx-players, .msg-container{
+        width: 90%;
+    }
+
+    .player-container input{
+        width: 200px;
+    }
+}
