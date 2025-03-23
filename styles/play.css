@@ -17,6 +17,10 @@ body{
     align-items: stretch;
 }
 
+div{
+    border-color: black;
+}
+
 .board-ctr{
     display: flex;
     flex-direction: row;
