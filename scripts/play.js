@@ -627,7 +627,8 @@ function play(){
                 idBCellRef = idCell;
             }
             var idBCROrg = idBCellRef;
-
+            idCell = String(idCell);
+            
             for(let i = 0; i < wordCopy.length; i++){
                 var letterCell = document.getElementById(idBCROrg);
         
