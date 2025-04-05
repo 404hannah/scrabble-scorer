@@ -731,6 +731,8 @@ function afFull(j, idACell){
 
         while(afterCell.classList.contains("played")){
             letterInCell = document.querySelector(`.L${idACell}`);
+            console.log("idACell: ", idACell);
+            console.log("letterInCell: ", letterInCell);
             letterACell = letterInCell.innerText;
             word = String(word).concat(letterACell);
             idACell = Number(idACell) + j;
@@ -1034,6 +1036,7 @@ function undo(){
             
             if (!undoArr[undoArr.length-1]["cellsPlayed"].includes(letterCell)){ 
                 letterCell.innerHTML = "";
+                letterCell.classList.remove("played");
             }
 
             idCell = Number(idCell) + Number(undoArr[undoArr.length-1]["j"]);
