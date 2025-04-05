@@ -731,8 +731,6 @@ function afFull(j, idACell){
 
         while(afterCell.classList.contains("played")){
             letterInCell = document.querySelector(`.L${idACell}`);
-            console.log("idACell: ", idACell);
-            console.log("letterInCell: ", letterInCell);
             letterACell = letterInCell.innerText;
             word = String(word).concat(letterACell);
             idACell = Number(idACell) + j;
@@ -765,7 +763,6 @@ function calcuWord(paintWord, word, j, idBCellRef){
     var idCell1 = idCell;
     let idBCellRef1 = idBCellRef; 
     
-    console.log(paintWord);
     // Displays the letter
     for(let i = 0; i < paintWord.length; i++){
         var letterCell = document.getElementById(idCell);
