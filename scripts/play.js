@@ -387,6 +387,7 @@ function errExit(){
     errCon.style.display = "none";
 }
 
+var undoId;
 // Dialog box for making a turn
 function turnShow(cell){
     var letterCell = document.getElementById(cell);
@@ -402,6 +403,7 @@ function turnShow(cell){
 
     // Sets clicked cell
     idCell = cell;
+    undoId = cell;
 }
 
 function turnExit(){
@@ -440,7 +442,12 @@ function direction(dir){
 
 var word;
 var idBCellRef;
+
+var undoWord;
 var turnScore;
+var movesTurn = [];
+var playedTurnId = [];
+var undoJ;
 
 // Button function for a word played
 function play(){
@@ -456,7 +463,9 @@ function play(){
         let idCell1 = idCell;
 
         word = txtBox.value.toUpperCase();
-        let paintWord = txtBox.value.toUpperCase();
+        paintWord = txtBox.value.toUpperCase();
+        undoWord = paintWord;
+
         let letMismatch = false;
         let yesAdjacent = false;
 
@@ -466,9 +475,11 @@ function play(){
         // Sets the direction
         if (dirMove === "x"){
             j = 1;
+            undoJ = 1;
             k = 100;
         } else if (dirMove === "y"){
             j = 100;
+            undoJ = 100;
             k = 1;
         }
 
@@ -617,6 +628,20 @@ function play(){
         } else {
             // var words = {1: word}; 
             turnScore = 0;
+            movesTurn = [];
+            playedTurnId = [];
+
+            for(let i = 0; i < paintWord.length; i++){
+                var letterCell = document.getElementById(idCell);
+                
+                if (letterCell.classList.contains("played")){ 
+                    playedTurnId.push(letterCell);
+                }
+        
+                idCell = Number(idCell) + j;
+            }
+            idCell = undoId;
+
             calcuWord(paintWord, word, j, idBCellRef);
 
             // Calculate the words formed other than the main word if there are any
@@ -628,7 +653,7 @@ function play(){
             }
             var idBCROrg = idBCellRef;
             idCell = String(idCell);
-            
+
             for(let i = 0; i < wordCopy.length; i++){
                 var letterCell = document.getElementById(idBCROrg);
         
@@ -663,6 +688,7 @@ function play(){
             word = "";
             paintWord = "";
            
+            undoInit(undoWord, turnScore, movesTurn, undoId, undoJ, playedTurnId);
             counter();
         }
     }
@@ -672,7 +698,7 @@ function play(){
 
 function befFull(j, idBCell){
     // Checking for letters before the word
-    if ((Number(idCell) > 115 && j == 100) || (Number(idCell.substring(idCell.length - 2)) != 1 && j == 1)){
+    if ((Number(idCell) > 115 && j == 100) || (Number(idCell.substring(idCell.length - 2)) > 1 && j == 1)){
         var beforeCell = document.getElementById(idBCell);
         var letterInCell;
         var letterBCell;
@@ -737,6 +763,7 @@ function calcuWord(paintWord, word, j, idBCellRef){
     var idCell1 = idCell;
     let idBCellRef1 = idBCellRef; 
     
+    console.log(paintWord);
     // Displays the letter
     for(let i = 0; i < paintWord.length; i++){
         var letterCell = document.getElementById(idCell);
@@ -809,8 +836,10 @@ function calcuWord(paintWord, word, j, idBCellRef){
 
     players[turnCounter]["score"] += score;
 
+    var playedWord = dupChecker(word);
     // Records the moves
-    players[turnCounter]["moves"][dupChecker(word)] = score;
+    players[turnCounter]["moves"][playedWord] = score;
+    movesTurn.push(playedWord);
 
     turnExit();
     
@@ -962,5 +991,61 @@ function exit(bool){
     } else {
         msgs.style.display = "none";
         exitMsg.style.display = "none";
+    }
+}
+
+var undoArr = [];
+function undoInit(word, turnScore, moves, idCell, j, cellsPlayed){
+    undoArr.push({
+        word: word,
+        score: turnScore,
+        moves: moves,
+        idCell: idCell,
+        j: j,
+        cellsPlayed: cellsPlayed
+    });
+}
+
+function undo(){
+    if(firstBool){
+        const errCon = document.querySelector(".err-container");
+        const errContent = document.querySelector(".err-content");
+
+        errCon.style.display = "flex";
+        errContent.innerText = "Undo not allowed on first turn.";
+    } else {
+        // Undo data
+        if(turnCounter == 1){
+            turnCounter = numPlayers;
+        } else {
+            turnCounter--;
+        }
+        
+        undoArr[undoArr.length-1]["moves"].forEach(element => {
+            delete players[turnCounter]["moves"][element];
+        });
+
+        players[turnCounter]["score"] = Number(players[turnCounter]["score"]) - Number(undoArr[undoArr.length-1]["score"]);
+
+        // Undo painted letters
+        var idCell = undoArr[undoArr.length-1]["idCell"];
+        for(let i = 0; i < undoArr[undoArr.length-1]["word"].length; i++){
+            var letterCell = document.getElementById(idCell);
+            
+            if (!undoArr[undoArr.length-1]["cellsPlayed"].includes(letterCell)){ 
+                letterCell.innerHTML = "";
+            }
+
+            idCell = Number(idCell) + Number(undoArr[undoArr.length-1]["j"]);
+        }
+
+        ranking();
+        renderPlayers();
+
+        if (turnCounter == 1 && Object.keys(players[turnCounter]["moves"]).length == 0){
+            firstBool = true;
+            firstMove();
+        }
+        undoArr.pop();
     }
 }

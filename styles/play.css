@@ -4,9 +4,9 @@ body{
 
     font-family: Roboto;
     color: black;
+    border-color: black;
 
     background-color: white;
-    border-color: black;
 
     width: 100vw;
     height: 100vh;
@@ -177,18 +177,19 @@ h1{
     font-weight: bold;
 }
 
-.fin-ex-ctr{
+.info-btn-ctr{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.fin-ex-ctr div{
+.info-btn-ctr div{
     width: 10px;
 }
 
-.fin-ex-ctr button{
+.info-btn-ctr button{
+    margin: 2px 2px;
     padding: 5px 5px;
     flex: 1;
 
@@ -816,7 +817,7 @@ button:active{
         font-size: 30px;
     }
 
-    .fin-ex-ctr button{
+    .info-btn-ctr button{
         font-size: 30px;
     }
 }
@@ -849,7 +850,7 @@ button:active{
         font-size: 30px;
     }
 
-    .fin-ex-ctr button{
+    .info-btn-ctr button{
         font-size: 30px;
     }
 
