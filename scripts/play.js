@@ -922,6 +922,63 @@ function movesExit(){
     movesCon.style.display = "none";
 }
 
+function checkerBox(){
+    const msgs = document.querySelector(".msgs");
+    const checkerMsg = document.querySelector(".checker-container");
+
+    msgs.style.display = "flex";
+    checkerMsg.style.display = "flex";
+}
+
+const txtBox = document.querySelector(".txt");
+txtBox.addEventListener("keydown", function(event){
+    if(event.key === "Enter"){
+        search();
+    }
+});
+
+async function search(){
+    const txtVal = document.querySelector(".txt").value.toLowerCase();
+    const resultBox = document.querySelector(".result-box");
+    var resultElem;
+
+    try{
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${txtVal}`);
+
+        if(response.ok){
+            const result = await response.json();
+
+            resultElem = `
+                <h3>${txtVal}</h3>
+                <h4>${result[0].meanings[0].partOfSpeech}</h4>
+                <p class="checker-result">${result[0].meanings[0].definitions[0].definition}</p>
+            `; 
+        } else {
+            throw new Error("No result");
+        }
+
+    } catch(error){
+        resultElem = `
+            <h4>No result for ${txtVal}</h4>
+        `;   
+    }
+
+    resultBox.innerHTML = resultElem;      
+    resultBox.style.display = "flex";
+}
+
+function checkerExit(){
+    const msgs = document.querySelector(".msgs");
+    const checkerMsg = document.querySelector(".checker-container");
+    msgs.style.display = "none";
+    checkerMsg.style.display = "none";
+
+    const resultBox = document.querySelector(".result-box");
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
+
+    document.querySelector(".txt").value = "";
+}
 
 // Asks for confirmation if the game will be finished
 function finMsg(){

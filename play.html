@@ -29,9 +29,10 @@
                     <!-- Generate players through JavaScript -->
                 </div>
                 <div class="info-btn-ctr">
-                    <button onclick="undo()">Undo</button>
+                    <button class="small-btn" onclick="undo()"><i class='bx bx-undo'></i></button>
+                    <button onclick="checkerBox()">Challenge</button>
                     <button onclick="finMsg()">Finish</button>
-                    <button onclick="exitMsg()">Exit</button>
+                    <button class="small-btn" onclick="exitMsg()"><i class='bx bx-x' id="x"></i></button>
                 </div>
             </div>
         </div>
@@ -92,6 +93,16 @@
                 <h2>Name's Moves</h2>
                 <p class="moves-content"></p>
                 <input type="button" class="button" onclick="movesExit()" value="Close">
+            </div>
+
+            <div class="checker-container">
+                <h2>Word Checker</h2>
+                <div class="search-row">
+                    <input type="text" placeholder="Word" class="txt">
+                    <i class='bx  bx-search' id="search" onclick="search()"></i> 
+                </div>
+                <div class="result-box"></div>
+                <input type="button" class="button" onclick="checkerExit()" value="Close">
             </div>
         </div>
         
