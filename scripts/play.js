@@ -471,17 +471,43 @@ function play(){
 
         // Identify which cell is clicked.
         let j;
+        var onBoard = false;
 
         // Sets the direction
         if (dirMove === "x"){
             j = 1;
             undoJ = 1;
             k = 100;
+
+            var xCell = String(idCell).slice(String(idCell).length - 1, String(idCell).length);
+            console.log(Number(xCell) + word.length);
+            // Checks if the word overflows
+            if(Number(xCell) + word.length <= 15){
+                onBoard = true;
+            }
         } else if (dirMove === "y"){
             j = 100;
             undoJ = 100;
             k = 1;
+
+            console.log(Number(idCell) + (word.length * 100));
+            // Checks if the word overflows
+            if(Number(idCell) + (word.length * 100) <= 1515){
+                onBoard = true;
+            }
         }
+
+        if (!onBoard){
+            // Error message
+            console.log("error");
+            const errCon = document.querySelector(".err-container");
+            const errContent = document.querySelector(".err-content");
+            
+            errCon.style.display = "flex";
+            errContent.innerText = "The word does not fit in the board.";
+
+            return;
+        } 
 
         idCell = String(idCell);
         idBCellRef = "";
@@ -510,7 +536,7 @@ function play(){
         }
         
         idCell = String(idCell1);
-
+        
         // Checks for a neighbor square 
         for(let i=0; i < paintWord.length; i++){
             var letterCell = document.getElementById(idCell);
@@ -611,7 +637,7 @@ function play(){
             yesAdjacent = true;
         }
 
-        if(!yesAdjacent){
+        if (!yesAdjacent){
             // Error message
             const errCon = document.querySelector(".err-container");
             const errContent = document.querySelector(".err-content");
