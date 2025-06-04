@@ -490,8 +490,10 @@ function play(){
             k = 100;
 
             var xCell = String(idCell).slice(String(idCell).length - 1, String(idCell).length);
+
+            console.log(Number(xCell) + word.length);
             // Checks if the word overflows
-            if(Number(xCell) + word.length <= 15){
+            if(Number(xCell) + word.length - 100 <= 15){
                 onBoard = true;
             }
         } else if (dirMove === "y"){
@@ -500,7 +502,7 @@ function play(){
             k = 1;
 
             // Checks if the word overflows
-            if(Number(idCell) + (word.length * 100) <= 1515){
+            if(Number(idCell) + (word.length * 100) - 100 <= 1515){
                 onBoard = true;
             }
         }
