@@ -22,7 +22,7 @@ renderBoard();
 renderPlayersCtr();
 renderPlayers();
 
-firstMove();
+// firstMove();
 
 function renderBoard(){
     let boardHTML = '';
@@ -372,18 +372,26 @@ function ranking(){
     }
 }
 
+/*
 function firstMove(){
     turnShow(808);
 }
+*/
 
 // Instructions is exited
 function insExit(){
+    const msgs = document.querySelector(".msgs");
     const ins = document.querySelector(".ins-container");
+    
+    msgs.style.display = "none";
     ins.style.display = "none";
 }
 
 function errExit(){
+    const msgs = document.querySelector(".msgs");
     const errCon = document.querySelector(".err-container");
+    
+    msgs.style.display = "none";
     errCon.style.display = "none";
 }
 
@@ -407,21 +415,23 @@ function turnShow(cell){
 }
 
 function turnExit(){
-    if(firstBool){
+    /* if(firstBool){
         const errCon = document.querySelector(".err-container");
         const errContent = document.querySelector(".err-content");
 
         errCon.style.display = "flex";
         errContent.innerText = "Starting position could not be changed.";
     } else {
-        const msgs = document.querySelector(".msgs");
-        const turnCon = document.querySelector(".turn-container");
-        const txtBox = document.querySelector(".textbox");
+        
+    } */
 
-        msgs.style.display = "none";
-        turnCon.style.display = "none";
-        txtBox.value = "";
-    }
+    const msgs = document.querySelector(".msgs");
+    const turnCon = document.querySelector(".turn-container");
+    const txtBox = document.querySelector(".textbox");
+
+    msgs.style.display = "none";
+    turnCon.style.display = "none";
+    txtBox.value = "";
     
 }
 
@@ -1090,9 +1100,12 @@ function undoInit(word, turnScore, moves, idCell, j, cellsPlayed){
 
 function undo(){
     if(firstBool){
+        // To review
+        const msgs = document.querySelector(".msgs");
         const errCon = document.querySelector(".err-container");
         const errContent = document.querySelector(".err-content");
 
+        msgs.style.display = "flex";
         errCon.style.display = "flex";
         errContent.innerText = "Undo not allowed on first turn.";
     } else {
@@ -1127,7 +1140,7 @@ function undo(){
 
         if (turnCounter == 1 && Object.keys(players[turnCounter]["moves"]).length == 0){
             firstBool = true;
-            firstMove();
+            // firstMove();
         }
         undoArr.pop();
     }
