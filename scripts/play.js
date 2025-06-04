@@ -798,6 +798,7 @@ function calcuWord(paintWord, word, j, idBCellRef){
     var specialClass;
     var idCell1 = idCell;
     let idBCellRef1 = idBCellRef; 
+    var numLetters = 0;
     
     // Displays the letter
     for(let i = 0; i < paintWord.length; i++){
@@ -807,6 +808,7 @@ function calcuWord(paintWord, word, j, idBCellRef){
             letterCell.innerHTML = `
                     <div class="L${idCell} letter">${paintWord[i]}</div>
                 `;
+            numLetters++;
         }
 
         idCell = Number(idCell) + j;
@@ -865,6 +867,11 @@ function calcuWord(paintWord, word, j, idBCellRef){
         }
         
         idBCellRef = Number(idBCellRef) + j;
+    }
+
+    // Bingo
+    if(numLetters == 7){
+        score += 50;
     }
 
     idBCellRef = "";
