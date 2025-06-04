@@ -490,7 +490,6 @@ function play(){
             k = 100;
 
             var xCell = String(idCell).slice(String(idCell).length - 1, String(idCell).length);
-            console.log(Number(xCell) + word.length);
             // Checks if the word overflows
             if(Number(xCell) + word.length <= 15){
                 onBoard = true;
@@ -500,7 +499,6 @@ function play(){
             undoJ = 100;
             k = 1;
 
-            console.log(Number(idCell) + (word.length * 100));
             // Checks if the word overflows
             if(Number(idCell) + (word.length * 100) <= 1515){
                 onBoard = true;
@@ -509,7 +507,6 @@ function play(){
 
         if (!onBoard){
             // Error message
-            console.log("error");
             const errCon = document.querySelector(".err-container");
             const errContent = document.querySelector(".err-content");
             
@@ -1137,6 +1134,17 @@ function undo(){
             if (!undoArr[undoArr.length-1]["cellsPlayed"].includes(letterCell)){ 
                 letterCell.innerHTML = "";
                 letterCell.classList.remove("played");
+
+                // Restore text label
+                if(letterCell.classList.contains("TW")){
+                    letterCell.innerText = "3W";
+                } else if (letterCell.classList.contains("DW")) {
+                    letterCell.innerText = "2W";
+                } else if (letterCell.classList.contains("TL")) {
+                    letterCell.innerText = "3L";
+                } else if (letterCell.classList.contains("DL")) {
+                    letterCell.innerText = "2L";
+                }
             }
 
             idCell = Number(idCell) + Number(undoArr[undoArr.length-1]["j"]);
