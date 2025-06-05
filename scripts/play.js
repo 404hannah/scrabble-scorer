@@ -13,6 +13,7 @@ for(let i=1; i <= numPlayers; i++){
 var idCell;
 var turnCounter = 1;
 let firstBool = true;
+let firstPlay = true;
 var dirMove;
 
 // Renders starting or blank board
@@ -506,7 +507,33 @@ function play(){
             }
         }
 
-        if (!onBoard){
+        let inStart = false;
+        let buffCell = idCell;
+        if (firstPlay) {
+            // Checks if in starting point
+            for(let i=0; i < paintWord.length; i++){
+                var letterCell = document.getElementById(buffCell);
+                
+                if (buffCell == "808"){
+                    inStart = true;
+                }
+
+                buffCell = Number(buffCell) + j;
+            }
+        } else {
+            inStart = true;
+        }
+
+        if (!inStart){
+            // Error message
+            const errCon = document.querySelector(".err-container");
+            const errContent = document.querySelector(".err-content");
+            
+            errCon.style.display = "flex";
+            errContent.innerText = "Not in starting position.";
+
+            return;
+        } else if (!onBoard){
             // Error message
             const errCon = document.querySelector(".err-container");
             const errContent = document.querySelector(".err-content");
@@ -645,7 +672,7 @@ function play(){
             yesAdjacent = true;
         }
 
-        if (!yesAdjacent){
+        if (!yesAdjacent && !firstPlay){
             // Error message
             const errCon = document.querySelector(".err-container");
             const errContent = document.querySelector(".err-content");
@@ -826,10 +853,10 @@ function calcuWord(paintWord, word, j, idBCellRef){
     
     idBCellRef = initIdBCellRef(idBCellRef1);
 
-    if(firstBool){
+    if(firstPlay){
         // First turn score is doubled.
         score *= 2;
-        firstBool = false;
+        firstPlay = false;
     }
 
     // Triple or Double Word Calculation
@@ -880,6 +907,8 @@ function calcuWord(paintWord, word, j, idBCellRef){
     // Records the moves
     players[turnCounter]["moves"][playedWord] = score;
     movesTurn.push(playedWord);
+
+    firstPlay = false;
 
     turnExit();
     
@@ -1164,6 +1193,7 @@ function undo(){
         
         if (turnCounter == 1 && Object.keys(players[turnCounter]["moves"]).length == 0){
             firstBool = true;
+            firstPlay = true;
             // firstMove();
         }
         undoArr.pop();
