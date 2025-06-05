@@ -491,7 +491,6 @@ function play(){
 
             var xCell = String(idCell).slice(String(idCell).length - 1, String(idCell).length);
 
-            console.log(Number(xCell) + word.length);
             // Checks if the word overflows
             if(Number(xCell) + word.length - 100 <= 15){
                 onBoard = true;
@@ -933,9 +932,11 @@ function counter(){
 // If a player chooses to skip his or her turn
 function skip(){
     counter();
+
     if(firstBool){
         firstBool = false;
     }
+
     turnExit();
 }
 
@@ -1155,6 +1156,12 @@ function undo(){
         ranking();
         renderPlayers();
 
+        if(turnCounter == 1){
+            turnCounter = numPlayers;
+        } else {
+            turnCounter--;
+        }
+        
         if (turnCounter == 1 && Object.keys(players[turnCounter]["moves"]).length == 0){
             firstBool = true;
             // firstMove();
