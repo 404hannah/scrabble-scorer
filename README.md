@@ -10,7 +10,7 @@ Unofficial website for computing players' scores in Scrabble
 
 ### Features
 
-- **Computation** - - The website automatically computes the score of their turn. If multiple words are played in one turn, the total score is displayed. The breakdown of these words could be seen through the **View Moves** button.
+- **Computation** - The website automatically computes the score of their turn. If multiple words are played in one turn, the total score is displayed. The breakdown of these words could be seen through the **View Moves** button.
 
 - **Undo** - If a mistake is made such as the word is placed incorrectly, the turn could be reversed with the Undo button. It is symbolized by the left arrow below the screen.
 
