@@ -857,6 +857,7 @@ function calcuWord(paintWord, word, j, idBCellRef){
         // First turn score is doubled.
         score *= 2;
         firstPlay = false;
+        firstBool = false;
     }
 
     // Triple or Double Word Calculation
