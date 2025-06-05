@@ -23,8 +23,6 @@ renderBoard();
 renderPlayersCtr();
 renderPlayers();
 
-// firstMove();
-
 function renderBoard(){
     let boardHTML = '';
     let id;
@@ -373,12 +371,6 @@ function ranking(){
     }
 }
 
-/*
-function firstMove(){
-    turnShow(808);
-}
-*/
-
 // Instructions is exited
 function insExit(){
     const msgs = document.querySelector(".msgs");
@@ -416,16 +408,6 @@ function turnShow(cell){
 }
 
 function turnExit(){
-    /* if(firstBool){
-        const errCon = document.querySelector(".err-container");
-        const errContent = document.querySelector(".err-content");
-
-        errCon.style.display = "flex";
-        errContent.innerText = "Starting position could not be changed.";
-    } else {
-        
-    } */
-
     const msgs = document.querySelector(".msgs");
     const turnCon = document.querySelector(".turn-container");
     const txtBox = document.querySelector(".textbox");
@@ -433,7 +415,6 @@ function turnExit(){
     msgs.style.display = "none";
     turnCon.style.display = "none";
     txtBox.value = "";
-    
 }
 
 function direction(dir){
@@ -1195,7 +1176,6 @@ function undo(){
         if (turnCounter == 1 && Object.keys(players[turnCounter]["moves"]).length == 0){
             firstBool = true;
             firstPlay = true;
-            // firstMove();
         }
         undoArr.pop();
     }
