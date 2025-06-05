@@ -140,6 +140,10 @@ h1{
 .player-container #x{
     display: flex;
     font-size: 36px;
+
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
 }
 
 .player-container #x:hover{
@@ -175,6 +179,10 @@ h1{
     font-size: 28px;
     font-weight: bold;
     letter-spacing: 2px;
+
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
 }
 
 .dbx-players .button:hover{

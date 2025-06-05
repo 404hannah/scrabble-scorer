@@ -213,10 +213,18 @@ h1 {
 
 .button {
   border-color: black;
+
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
 
 button {
   border-color: black;
+
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
 
 button:hover {
@@ -718,7 +726,7 @@ button:active {
   z-index: 106;
 
   width: 350px;
-  height: 250px;
+  height: 350px;
 
   padding: 5px 5px 5px 5px;
 
@@ -845,6 +853,10 @@ button:active {
   margin: 0px 5px;
   font-size: 32px;
   font-weight: bold;
+
+  transition-property: color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
 
 .result-box{
