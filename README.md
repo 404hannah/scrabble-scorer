@@ -14,6 +14,6 @@ Unofficial website for computing players' scores in Scrabble
 
 - **Undo** - If a mistake is made such as the word is placed incorrectly, the turn could be reversed with the Undo button. It is symbolized by the left arrow below the screen.
 
-- **Challenge** - It uses [dictionaryapi](https://dictionaryapi.dev/) to check if a word exists by providing the part of speech and definition of a word.
+- **Challenge** - It uses [dictionaryapi](https://dictionaryapi.dev/) to check if the word exists by providing the part of speech and definition of a word.
 
 Thanks for playing!
