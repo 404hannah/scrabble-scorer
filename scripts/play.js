@@ -1167,12 +1167,6 @@ function undo(){
         ranking();
         renderPlayers();
 
-        if(turnCounter == 1){
-            turnCounter = numPlayers;
-        } else {
-            turnCounter--;
-        }
-        
         if (turnCounter == 1 && Object.keys(players[turnCounter]["moves"]).length == 0){
             firstBool = true;
             firstPlay = true;
